@@ -1,0 +1,19 @@
+package passatempo.guida;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Strada s=new Strada();
+		s.percorso1();
+		s.setIndicazioniPercorso(s.percorso1());
+		Veicolo auto=new Automobile(20, 30, 180);
+		
+		
+		for(Indicazione ind:s.getIndicazioniPercorso()) {
+			auto.seguiIndicazione(ind);
+			
+		}
+
+	}
+
+}

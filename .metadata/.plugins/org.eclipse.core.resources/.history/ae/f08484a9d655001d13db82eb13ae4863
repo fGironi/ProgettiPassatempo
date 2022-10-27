@@ -1,0 +1,8 @@
+package passatempo.guida;
+import java.util.*;
+
+public class Strada {
+	
+	private ArrayList<Indicazione> indicazioniPercorso;
+	
+}

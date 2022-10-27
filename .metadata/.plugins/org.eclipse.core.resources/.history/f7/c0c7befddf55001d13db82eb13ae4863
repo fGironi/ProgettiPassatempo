@@ -1,0 +1,27 @@
+package passatempo.guida;
+
+public class Automobile extends Veicolo implements Guida{
+
+	
+	
+	
+	
+	@Override
+	public void accelera() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void frena() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void gira(String direzione, Integer gradiCurva) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,113 @@
+package passatempo.guida;
+
+public class Veicolo implements Guida {
+
+	private String nomeVeicolo;
+	private Integer accelerazione;
+	private Integer efficaciaFreni;
+	private Integer velocitaMax;
+	private Integer posizione;
+	private String stato;
+	private Integer velocita;
+	
+	public Veicolo(Integer accelerazione, Integer efficaciaFreni, Integer velocitaMax) {
+		super();
+		this.accelerazione = accelerazione;
+		this.efficaciaFreni = efficaciaFreni;
+		this.velocitaMax = velocitaMax;
+	}
+	public Integer getAccelerazione() {
+		return accelerazione;
+	}
+	public void setAccelerazione(Integer accelerazione) {
+		this.accelerazione = accelerazione;
+	}
+	public Integer getEfficaciaFreni() {
+		return efficaciaFreni;
+	}
+	public void setEfficaciaFreni(Integer efficaciaFreni) {
+		this.efficaciaFreni = efficaciaFreni;
+	}
+	public Integer getVelocitaMax() {
+		return velocitaMax;
+	}
+	public void setVelocitaMax(Integer velocitaMax) {
+		this.velocitaMax = velocitaMax;
+	}
+	public Integer getPosizione() {
+		return posizione;
+	}
+	public void setPosizione(Integer posizione) {
+		this.posizione = posizione;
+	}
+	public String getStato() {
+		return stato;
+	}
+	public void setStato(String stato) {
+		this.stato = stato;
+	}	
+	public Integer getVelocita() {
+		return velocita;
+	}
+	public void setVelocita(Integer velocita) {
+		this.velocita = velocita;		
+	}
+	public String getNomeVeicolo() {
+		return nomeVeicolo;
+	}
+	public void setNomeVeicolo(String nomeVeicolo) {
+		this.nomeVeicolo = nomeVeicolo;
+	}
+	
+	
+	@Override
+	public void accelera(Integer velocitaConsentita) {
+		if(this.getVelocita()+this.getAccelerazione()<=velocitaConsentita) {
+			this.setVelocita(this.getVelocita()+this.getAccelerazione());			
+		}
+		else {
+			this.setVelocita(velocitaConsentita);
+		}
+		
+	}
+	@Override
+	public void rallenta(Integer velocitaConsentita) {
+		this.setVelocita(velocitaConsentita);
+		
+	}
+	
+	
+	@Override
+	public void frena() {
+		this.setVelocita(this.getVelocita()-this.efficaciaFreni);
+		
+	}
+	@Override
+	public void gira(String direzione, Integer gradiCurva) {
+		this.setStato("gira a "+direzione+" di "+gradiCurva+" gradi");		
+		
+	}
+	@Override
+	public void seguiIndicazione(Indicazione ind) {
+		if(this.getVelocita()<ind.getVelocitaConsentita() && this.getVelocita()<this.getVelocitaMax()) {
+			this.accelera(ind.getVelocitaConsentita());
+		}
+		if (this.getVelocita()>(ind.getVelocitaConsentita()+(this.getVelocita()/2))) {
+			this.frena();
+		}
+		if (this.getVelocita()>ind.getVelocitaConsentita()) {
+			this.rallenta(ind.getVelocitaConsentita());
+		}
+		if (ind.getGradiCurva()!=0) {
+			this.gira(ind.getDirezioneCurva(), ind.getGradiCurva());
+		}
+		if (ind.getGradiCurva()==0) {
+			this.setStato("avanza");
+		}
+		
+		System.out.println("indicazione "+ind.getPosizione()+": ");
+		
+	}
+
+		
+}

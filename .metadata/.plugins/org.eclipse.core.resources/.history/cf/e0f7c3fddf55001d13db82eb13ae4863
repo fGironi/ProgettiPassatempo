@@ -1,0 +1,48 @@
+package passatempo.guida;
+import java.util.*;
+
+public class Strada {
+	
+	private ArrayList<Indicazione> indicazioniPercorso;
+
+	
+	public ArrayList<Indicazione> getIndicazioniPercorso() {
+		return indicazioniPercorso;
+	}
+
+	public void setIndicazioniPercorso(ArrayList<Indicazione> indicazioniPercorso) {
+		this.indicazioniPercorso = indicazioniPercorso;
+	}
+	
+	public ArrayList<Indicazione> percorso1() {
+	
+		ArrayList<Indicazione> percorso1= new ArrayList<Indicazione>();
+		for (int i=0; i<300; i++) {
+			Indicazione ind=new Indicazione();
+			if (i<100) {
+				ind.setVelocitaConsentita(50);
+				}
+			else if (i<118) {
+				ind.setVelocitaConsentita(40); ind.setGradiCurva(5); ind.setDirezioneCurva("SX");
+			}
+			else if (i< 160) {
+				ind.setVelocitaConsentita(50);
+			}
+			else if (i<163) {
+				ind.setVelocitaConsentita(30); ind.setGradiCurva(30); ind.setDirezioneCurva("DX");
+			}
+			else {
+				ind.setVelocitaConsentita(90);
+			}
+			
+			ind.setPosizione(i);
+			
+			percorso1.add(ind);
+		}
+		
+		return percorso1;
+		
+		
+	}
+	
+}

@@ -1,0 +1,9 @@
+package passatempo.guida;
+
+public interface Guida {
+
+	public void accelera();
+	public void frena();
+	public void gira(String direzione, Integer gradiCurva);
+
+}

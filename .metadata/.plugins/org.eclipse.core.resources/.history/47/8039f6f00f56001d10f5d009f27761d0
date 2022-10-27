@@ -1,0 +1,24 @@
+package passatempo.guida;
+
+public class Automobile extends Veicolo{
+
+	private String modello;
+	
+	
+	
+	
+	public Automobile(Integer accelerazione, Integer efficaciaFreni, Integer velocitaMax) {
+		super(accelerazione, efficaciaFreni, velocitaMax);
+		
+	}
+
+
+	public String getModello() {
+		return modello;
+	}
+
+	public void setModello(String modello) {
+		this.modello = modello;
+	}
+
+}

@@ -1,0 +1,9 @@
+package passatempo.guida;
+
+public class Veicolo {
+
+	private Integer accelerazione;
+	private Integer efficaciaFreni;
+	private Integer velocitaMax;
+	private Integer posizione;
+}

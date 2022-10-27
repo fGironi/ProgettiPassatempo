@@ -1,0 +1,37 @@
+package passatempo.guida;
+
+public class Indicazione {
+
+	private Integer posizione;
+	private Integer velocitaConsentita;
+	private Integer gradiCurva;
+	private String direzioneCurva;
+	
+	
+	public Integer getPosizione() {
+		return posizione;
+	}
+	public void setPosizione(Integer posizione) {
+		this.posizione = posizione;
+	}
+	public Integer getVelocitaConsentita() {
+		return velocitaConsentita;
+	}
+	public void setVelocitaConsentita(Integer velocitaConsentita) {
+		this.velocitaConsentita = velocitaConsentita;
+	}
+	public Integer getGradiCurva() {
+		return gradiCurva;
+	}
+	public void setGradiCurva(Integer gradiCurva) {
+		this.gradiCurva = gradiCurva;
+	}
+	public String getDirezioneCurva() {
+		return direzioneCurva;
+	}
+	public void setDirezioneCurva(String direzioneCurva) {
+		this.direzioneCurva = direzioneCurva;
+	}
+	
+	
+}

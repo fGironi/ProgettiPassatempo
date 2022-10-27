@@ -1,0 +1,38 @@
+package passatempo.guida;
+
+public abstract class Veicolo {
+
+	private Integer accelerazione;
+	private Integer efficaciaFreni;
+	private Integer velocitaMax;
+	private Integer posizione;
+	
+	
+	public Integer getAccelerazione() {
+		return accelerazione;
+	}
+	public void setAccelerazione(Integer accelerazione) {
+		this.accelerazione = accelerazione;
+	}
+	public Integer getEfficaciaFreni() {
+		return efficaciaFreni;
+	}
+	public void setEfficaciaFreni(Integer efficaciaFreni) {
+		this.efficaciaFreni = efficaciaFreni;
+	}
+	public Integer getVelocitaMax() {
+		return velocitaMax;
+	}
+	public void setVelocitaMax(Integer velocitaMax) {
+		this.velocitaMax = velocitaMax;
+	}
+	public Integer getPosizione() {
+		return posizione;
+	}
+	public void setPosizione(Integer posizione) {
+		this.posizione = posizione;
+	}
+	
+	
+	
+}

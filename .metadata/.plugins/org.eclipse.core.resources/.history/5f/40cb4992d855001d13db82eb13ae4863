@@ -1,0 +1,38 @@
+package passatempo.guida;
+import java.util.*;
+
+public class Strada {
+	
+	private ArrayList<Indicazione> indicazioniPercorso;
+
+	
+	public ArrayList<Indicazione> getIndicazioniPercorso() {
+		return indicazioniPercorso;
+	}
+
+	public void setIndicazioniPercorso(ArrayList<Indicazione> indicazioniPercorso) {
+		this.indicazioniPercorso = indicazioniPercorso;
+	}
+	
+	public ArrayList<Indicazione> percorso1() {
+	
+		ArrayList<Indicazione> percorso1= new ArrayList<Indicazione>();
+		for (int i=0; i<1000; i++) {
+			Indicazione ind=new Indicazione();
+			if (i<100) {
+				
+				
+			}
+			
+			
+			
+			
+			percorso1.add(ind);
+		}
+		
+		return percorso1;
+		
+		
+	}
+	
+}
