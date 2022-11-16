@@ -37,11 +37,11 @@ public class Main {
 				p.situazione(g1, g2, t);
 				g2.Gioca(g2.getMano(), t.getCartePerTerra(), p);
 				p.situazione(g1, g2, t);
-			}
-		g1.PescaIniziale(p.getMazzo());
-		g2.PescaIniziale(p.getMazzo());
-		System.out.println();
-		p.situazione(g1, g2, t);
+				}
+			g1.PescaIniziale(p.getMazzo());
+			g2.PescaIniziale(p.getMazzo());
+			System.out.println();
+			p.situazione(g1, g2, t);
 		}
 		while (g2.getMano().size()>0) {
 			g1.Gioca(g1.getMano(), t.getCartePerTerra(), p);

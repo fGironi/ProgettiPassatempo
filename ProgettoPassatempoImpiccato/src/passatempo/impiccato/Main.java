@@ -1,5 +1,4 @@
 package passatempo.impiccato;
-
 import java.io.IOException;
 import java.util.Scanner;
 //TODO longterm: trasformare le lettere in oggetti, evitare che la ripetizione di un errore tolga vite 
@@ -16,23 +15,36 @@ public class Main {
 		System.out.println("ad esempio scrivendo '+parola')");
 		System.out.println();
 		Integer record=0;
+		
+		
 		boolean partita=true;	
 		while (partita==true) {
 			Utente user=new Utente(7);
 			Parola parola=new Parola();
+			System.out.println("scegli la modalità a cui giocare! scrivi \"harry\" per indovinare un personaggio di HP o \"parola\" per indovinare una parola casuale");
+			String modalita=userInput.nextLine();
+			if (modalita.equals("harry")){
+				parola.creaHarryPotter();
+			}
+			if (modalita.equals("capitale")){
+				parola.creaCapitale();
+			}
+			
+			if (modalita.equals("parola")) {
+				parola.creaParola();	
+				
+			}
 			parola.scegliParola();
 			System.out.println("la parola segreta e' di "+parola.getParolaScelta().length()+" lettere");
 			System.out.println();
-			
-				
-			
+						
 			while(user.isGioca()) {
 				parola.mostraParola(user);
 				parola.indovina(userInput, user);
 				System.out.println();
 				
 			}
-			
+		
 			System.out.println();
 			if (user.getVite()>record) {
 				System.out.println("nuovo record!"); 

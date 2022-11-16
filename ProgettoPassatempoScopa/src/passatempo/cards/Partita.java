@@ -70,9 +70,9 @@ public class Partita {
 		System.out.println("-----------------------------------------");
 	}
 	
-	public int primiera (Giocatore g1, String seme) {
+	public Integer primiera (Giocatore g, String seme) {
 		int puntiPrim=0;
-		for (Carta c:g1.getPrese()) {
+		for (Carta c:g.getPrese()) {
 			if (c.getSeme()==seme) {
 				if (c.getValore()==7) {puntiPrim=21; break;}
 				else if (c.getValore()==6) {if (puntiPrim<18) {puntiPrim=18;}}

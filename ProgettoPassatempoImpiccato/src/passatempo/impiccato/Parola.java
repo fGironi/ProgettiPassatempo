@@ -1,7 +1,14 @@
 package passatempo.impiccato;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+
+//import com.github.javafaker.Country;
+import com.github.javafaker.Faker;
 
 public class Parola {
 
@@ -10,23 +17,9 @@ public class Parola {
 	private ArrayList <Boolean> lettereIndovinate;
 	private Integer giuste;
 	private ArrayList <String> lettereTentate;
+//	private ArrayList <String> paesiPossibili;
 
-	
-	
-	public Parola() throws IOException {
-		super();
-		this.lettereTentate=new ArrayList<String>();
-		this.giuste=0;
-		this.parolePossibili=new ArrayList<String>();
-		BufferedReader br = new BufferedReader(new FileReader("/home/neotech/Desktop/gitclones/Passatempo/ProgettoPassatempoImpiccato/src/passatempo/impiccato/Parole.txt"));
-		String parola;
 
-		while((parola=br.readLine()) !=null) {
-			//check per potenziali duplicati nella lista fornita
-			if (this.parolePossibili.contains(parola)==false) this.parolePossibili.add(parola);
-		}
-		br.close();
-	}
 
 	public ArrayList <String> getLettereTentate() {
 		return lettereTentate;
@@ -65,10 +58,55 @@ public class Parola {
 		this.lettereIndovinate = lettereIndovinate;
 	}
 		
+	
+	public void creaCapitale() {
+	this.lettereTentate=new ArrayList<String>();
+	this.giuste=0;
+	this.parolePossibili=new ArrayList<String>();
+	Faker faker=new Faker();
+	for (int i=0; i<20; i++) {
+		String capitale=faker.country().capital().toLowerCase();
+		if (this.parolePossibili.contains(capitale)==false) this.parolePossibili.add(capitale);
+		else i--;
+			
+		}
+		
+	}
+
+	
+	public void creaHarryPotter() {
+		this.lettereTentate=new ArrayList<String>();
+		this.giuste=0;
+		this.parolePossibili=new ArrayList<String>();
+		Faker faker=new Faker();
+		for (int i=0; i<20; i++) {
+			String personaggio=faker.harryPotter().character().toLowerCase();
+			if (this.parolePossibili.contains(personaggio)==false) this.parolePossibili.add(personaggio);
+			else i--;
+		}
+	}
+	
+	public void creaParola() throws IOException {
+		
+		this.lettereTentate=new ArrayList<String>();
+		this.giuste=0;
+		this.parolePossibili=new ArrayList<String>();
+		BufferedReader br = new BufferedReader(new FileReader("/home/neotech/Desktop/gitclones/Passatempo/ProgettoPassatempoImpiccato/src/passatempo/impiccato/Parole.txt"));
+		String parola;
+
+		while((parola=br.readLine()) !=null) {
+			//check per potenziali duplicati nella lista fornita
+			if (this.parolePossibili.contains(parola)==false) this.parolePossibili.add(parola);
+		}
+		br.close();
+	}
+	
+	
 	public void scegliParola() {
 		Random rnd=new Random();
 		int i=rnd.nextInt(this.parolePossibili.size());
 		this.parolaScelta=this.parolePossibili.get(i);
+		
 		this.parolePossibili.remove(i);
 		this.lettereIndovinate=new ArrayList<Boolean>();
 		for (int let = 0; let<this.parolaScelta.length(); let++) {
