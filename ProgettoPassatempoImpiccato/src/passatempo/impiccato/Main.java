@@ -1,4 +1,6 @@
 package passatempo.impiccato;
+// 																GIOCO IMPICCATO
+
 import java.io.IOException;
 import java.util.Scanner;
 //TODO longterm: trasformare le lettere in oggetti, evitare che la ripetizione di un errore tolga vite 
@@ -11,7 +13,7 @@ public class Main {
 		
 		System.out.println("Semplice partita ad impiccato, indovina la parola segreta una lettera per volta!");
 		System.out.println("il giocatore ha 7 vite e ne perde una ogni volta che tenta una lettera che non e' nella parola");
-		System.out.println("(Se vuoi provare ad indovinare la parola segreta per intero puoi scriverla preceduta da un '+'");
+		System.out.println("(Se vuoi provare ad indovinare la parola segreta startper intero puoi scriverla preceduta da un '+'");
 		System.out.println("ad esempio scrivendo '+parola')");
 		System.out.println();
 		Integer record=0;
@@ -30,11 +32,12 @@ public class Main {
 				parola.creaCapitale();
 			}
 			
-			if (modalita.equals("parola")) {
-				parola.creaParola();	
+			//if (modalita.equals("parola")) {
+			else	parola.creaParola();	
 				
-			}
+			//}
 			parola.scegliParola();
+						
 			System.out.println("la parola segreta e' di "+parola.getParolaScelta().length()+" lettere");
 			System.out.println();
 						

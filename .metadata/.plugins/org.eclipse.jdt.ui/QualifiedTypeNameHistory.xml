@@ -12,4 +12,5 @@
     <fullyQualifiedTypeName name="java.util.Random"/>
     <fullyQualifiedTypeName name="java.awt.Point"/>
     <fullyQualifiedTypeName name="java.util.Collections"/>
+    <fullyQualifiedTypeName name="passatempo.negozio.Magia"/>
 </qualifiedTypeNameHistroy>

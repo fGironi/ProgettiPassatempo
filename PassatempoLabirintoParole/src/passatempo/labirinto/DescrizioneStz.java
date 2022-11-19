@@ -6,6 +6,7 @@ public class DescrizioneStz {
 
 	private ArrayList<String> descrStart;
 	private ArrayList<String> descrRandom;
+	private ArrayList<String> descrMostro;
 	
 	public ArrayList<String> getDescrStart() {
 		return descrStart;
@@ -18,6 +19,12 @@ public class DescrizioneStz {
 	}
 	public void setDescrRandom(ArrayList<String> descrRandom) {
 		this.descrRandom = descrRandom;
+	}
+	public ArrayList<String> getDescrMostro() {
+		return descrMostro;
+	}
+	public void setDescrMostro(ArrayList<String> descrMostro) {
+		this.descrMostro = descrMostro;
 	}
 	
 	
@@ -36,7 +43,7 @@ public class DescrizioneStz {
 		ArrayList<String> rndDes=new ArrayList<String>();
 		String stanza1="un improbabile ruscello scorre da un angolo all'altro della stanza, emettendo un bagliore soffuso che e' tutto cio' che illumina l'ambiente";
 		rndDes.add(stanza1);
-		String stanza2="un enorme crepaccio si apre al centro di quello che potrebbe essere stato un bellissimo salone. Il lampadario ancora acceso al centro del soffitto non riesce ad illuminare fino in fondo il baratro";
+		String stanza2="un enorme crepaccio si apre al centro di quello che potrebbe essere stato un bellissimo salone. Il lampadario al centro del soffitto non riesce ad illuminare fino in fondo il baratro";
 		rndDes.add(stanza2);
 		String stanza3="un improbabile ruscello scorre da un angolo all'altro della stanza, emettendo un bagliore soffuso che e' tutto cio' che illumina l'ambiente";
 		rndDes.add(stanza3);
@@ -50,7 +57,28 @@ public class DescrizioneStz {
 		rndDes.add(stanza7);		
 		String stanza8="Se non fosse per il grigio del muro di pietra che intravedi tra le fronde, giureresti di trovarti in una foresta illuminata da centinaia di lucciole";
 		rndDes.add(stanza8);
+		String stanza9="una piccola stanza dalla forma circolare, alcuni segni di colore diverso si intravedono tra i detriti sul pavimento";
+		rndDes.add(stanza9);
+		String stanza10="Un'anonima stanza rettangolare ad eccezione di un piccolo altare spoglio con una bacinella in pietra.";
+		rndDes.add(stanza10);
+		String stanza11="L'enorme quantita' di mobili e altri oggetti di legno distrutti presenti in questa stanza ricorda un vecchio magazzino abbandonato";
+		rndDes.add(stanza11);
+		String stanza12="Dodici torce spente disegnano una spirale all'interno della camera, una sola di esse e' accesa";
+		rndDes.add(stanza12);
+		String stanza13="Un totem di legno pietrificato si erge al centro della stanza. Le fattezze smussate delle creature rappresentate sono ormai irriconoscibili";
+		rndDes.add(stanza13);
+		String stanza14="Coppie di statue di guerrieri armati di lancia fiancheggiano le porte della stanza. Sono tutte in condizioni pessime";
+		rndDes.add(stanza14);
+		String stanza15="Funghi luminescenti sono cresciuti sulle pareti e sul pavimento della stanza. L'umidita' e' notevole e fastidiosa";
+		rndDes.add(stanza15);
+		String stanza16="Un tappeto dai colori una volta sgargianti decora il pavimento della stanza, alcuni drappi consumati e strappati pendono dal soffitto";
+		rndDes.add(stanza16);
 		this.descrRandom=rndDes;
 	}
-	
+
+	public void creaDesMst() {
+		ArrayList<String> desMos=new ArrayList<String>();
+		String sMostro1="";
+		desMos.add(sMostro1);
+	}
 }

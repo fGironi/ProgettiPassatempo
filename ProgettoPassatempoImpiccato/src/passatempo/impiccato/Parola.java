@@ -111,6 +111,10 @@ public class Parola {
 		this.lettereIndovinate=new ArrayList<Boolean>();
 		for (int let = 0; let<this.parolaScelta.length(); let++) {
 			Boolean letInd=false;
+			if (this.parolaScelta.charAt(let)==' ') { 
+				letInd=true;
+				this.giuste++;
+			}
 			this.lettereIndovinate.add(letInd);
 		}	
 
@@ -172,6 +176,7 @@ public class Parola {
 		System.out.println("lettere tentate: "+this.lettereTentate);
 		System.out.println("lettere indovinate: "+this.giuste+"/"+this.parolaScelta.length());
 		for (int let = 0; let<this.parolaScelta.length(); let++) {
+			
 			if (this.lettereIndovinate.get(let)==true) {
 				System.out.print(this.parolaScelta.charAt(let)+" ");
 			}

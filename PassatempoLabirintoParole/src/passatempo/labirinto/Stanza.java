@@ -11,7 +11,7 @@ public class Stanza {
 	private Evento evento;
 	private Point posizione;
 	private Integer nPorte;
-	private Boolean haMostro;
+	private Boolean haMostro=null;
 	private Boolean eventoAttivato=false;
 	
 	public String getDescrizione() {
@@ -40,7 +40,7 @@ public class Stanza {
 	}
 	@Override
 	public String toString() {
-		return "Stanza "+this.idstz+" ["+posizione.x+", "+posizione.y+"] indagata="+this.getEventoAttivato();
+		return "Stanza "+this.idstz+" ["+posizione.x+", "+posizione.y+"] indagata="+this.getEventoAttivato()+", mostro="+this.getHaMostro();
 		
 	}
 	public Integer getnPorte() {

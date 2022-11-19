@@ -47,13 +47,17 @@ public class Generatore {
 				Evento u=new Uscita();	eventi.add(u);
 			}
 			else if (i==1) {
-				Evento c=new Chiave(); eventi.add(c);
+				Evento c=new TrovaChiave(); eventi.add(c);
 			}
-			else if (i>1&i<6) {
-				Evento t=new Trappola(); eventi.add(t);
+			else if (i==2) {
+				Evento m=new Mostro(); eventi.add(m);
 			}
+			else if (i>2&i<6) {
+				Evento o=new TrovaOggetto(); eventi.add(o);	
+			}
+			
 			else {
-				Evento o=new Oggetto(); eventi.add(o);
+				Evento t=new Trappola(); eventi.add(t);
 			}
 			Collections.shuffle(eventi);
 		}
@@ -68,15 +72,18 @@ public class Generatore {
 		start.setStanzeVicine(new HashMap<String, Stanza>());
 		Integer rds=rnd.nextInt(ds.getDescrStart().size());
 		start.setDescrizione(ds.getDescrStart().get(rds));
-		start.setEvento(new Oggetto());
+		start.setEvento(new TrovaOggetto());
 		//Creo le varie stanze
 		l.getMappaLab().put(startP, start);
 		for (int i=0; i<numeroStz; i++) {
 			Stanza s=new Stanza();
 			s.setEvento(eventi.get(0));
 			eventi.remove(0);
+			
 			Integer rd=rnd.nextInt(ds.getDescrRandom().size());
-			s.setDescrizione(ds.getDescrRandom().get(rd));
+			String des=ds.getDescrRandom().get(rd);
+			s.setDescrizione(des);
+			ds.getDescrRandom().remove(des);
 			s.setIdstz(i+1);
 			s.setStanzeVicine(new HashMap<String, Stanza>());
 			while (s.getPosizione()==null) {

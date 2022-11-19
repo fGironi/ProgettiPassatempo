@@ -1,18 +1,20 @@
 package passatempo.labirinto;
 
-public class Trappola implements Evento {
+public class TrovaChiave implements Evento {
 
-	private String nomeEvento="una trappola";
+	private String nomeEvento="la chiave!";
 	
 	@Override
 	public void indaga(Giocatore g, Stanza s) {
-		g.setVita(g.getVita()-1);
-		System.out.println("C'era una trappola! perdi una vita! (vite:"+g.getVita()+")");
+		System.out.println("hai trovato la chiave!");
+		g.setHaChiave(true);
 		s.setEventoAttivato(true);
+
 	}
+
 	@Override
 	public String getNomeEvento() {
-		return nomeEvento;
+		return this.nomeEvento;
 	}
 
 	public void setNomeEvento(String nomeEvento) {
