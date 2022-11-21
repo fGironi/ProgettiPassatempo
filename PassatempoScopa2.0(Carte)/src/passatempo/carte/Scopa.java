@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map.Entry;
-import java.util.Random;
 
 
 
@@ -40,63 +39,40 @@ public class Scopa implements Gioco {
 			mazzo.remove(0);
 		}
 		System.out.println("vengono messe 4 carte per terra");
+		System.out.println(tavolo);
+		
 	}
 
 	
 	@Override
 	public void giocaTurno(Giocatore giocatore, Tavolo tavolo) {
-		Random rnd=new Random();
-		Carta cartaGiocata = giocatore.getMano().get(rnd.nextInt(giocatore.getMano().size()));
+		Carta cartaGiocata=null;
+		if (giocatore instanceof CPUScopa) {
+			cartaGiocata = ((CPUScopa) giocatore).getMossaScelta().getCartaGiocata();
+		}
 		System.out.println(giocatore.getNome()+" gioca "+cartaGiocata);
-		boolean presaFatta=false;
-		for (Carta cartaTerra:tavolo.getCartePerTerra()) {
-			if (cartaGiocata.getValore()==cartaTerra.getValore()) {
-				System.out.println(giocatore.getNome()+" prende "+cartaTerra+" da terra");
-				giocatore.getPrese().add(cartaTerra);
+		if (giocatore instanceof CPUScopa) {
+			System.out.println("la cpu ha calcolato un valore mossa di "+((CPUScopa) giocatore).getMossaScelta().getValoreMossa());
+			if (((CPUScopa) giocatore).getMossaScelta().getPrende()==true){
 				giocatore.getPrese().add(cartaGiocata);
 				giocatore.getMano().remove(cartaGiocata);
-				tavolo.getCartePerTerra().remove(cartaTerra);
-				presaFatta=true;
+				for (Carta c: ((CPUScopa) giocatore).getMossaScelta().getCartePrese()) {
+					giocatore.getPrese().add(c);
+					System.out.println(giocatore.getNome()+" prende "+c);
+					tavolo.getCartePerTerra().remove(c);
+				}
 				this.ultimaPresa=giocatore.getNome();
 				if(tavolo.getCartePerTerra().size()==0) {
 					System.out.println("Scopa per "+giocatore.getNome()+"!");
 					this.scopeFatte.put(giocatore, cartaGiocata);
 					}
-				break;
-			}
-		}
-		//presa con la somma di due carte:
-		if (presaFatta==false) {
-			for (int i=0; i<tavolo.getCartePerTerra().size()-1; i++) {
-				Carta cartaT1=tavolo.getCartePerTerra().get(i);
-				for (int j=i+1; j<tavolo.getCartePerTerra().size(); j++) {
-					Carta cartaT2=tavolo.getCartePerTerra().get(j);
-					if (cartaGiocata.getValore()==((cartaT1.getValore())+cartaT2.getValore())) {
-						System.out.println(giocatore.getNome()+" prende "+cartaT1+" e "+cartaT2+" da terra");
-						giocatore.getPrese().add(cartaT1);
-						giocatore.getPrese().add(cartaT2);
-						giocatore.getPrese().add(cartaGiocata);
-						giocatore.getMano().remove(cartaGiocata);
-						tavolo.getCartePerTerra().remove(cartaT1);
-						tavolo.getCartePerTerra().remove(cartaT2);
-						presaFatta=true;
-						this.ultimaPresa=giocatore.getNome();
-						if(tavolo.getCartePerTerra().size()==0) {
-							System.out.println("Scopa per "+giocatore.getNome()+"!"); 
-							this.scopeFatte.put(giocatore, cartaGiocata);
-							}
-						break;
-					}
-				}
-				if (presaFatta==true) {break;}
-			}
 				
-		}
-		
-		if (presaFatta==false) {
-			System.out.println(giocatore.getNome()+" non prende nulla");
-			tavolo.getCartePerTerra().add(cartaGiocata);
-			giocatore.getMano().remove(cartaGiocata);
+			}
+			if (((CPUScopa) giocatore).getMossaScelta().getPrende()==false) {
+				System.out.println(giocatore.getNome()+" non prende nulla");
+				tavolo.getCartePerTerra().add(cartaGiocata);
+				giocatore.getMano().remove(cartaGiocata);
+			}
 		}
 		System.out.println();
 		
@@ -127,6 +103,7 @@ public class Scopa implements Gioco {
 			for (int i=0; i<3; i++) {
 				for (Giocatore g:giocatori.values()) {
 					System.out.println();
+					if (g instanceof CPUScopa) ((CPUScopa) g).sceltaScopaAI(tavolo, giocatori);
 					this.giocaTurno(g, tavolo);
 					this.situazione(mazzo, giocatori, tavolo);
 				}
@@ -137,6 +114,7 @@ public class Scopa implements Gioco {
 		for (int i=0; i<3; i++) {
 			for (Giocatore g:giocatori.values()) {
 				System.out.println();
+				if (g instanceof CPUScopa) ((CPUScopa) g).sceltaScopaAI(tavolo, giocatori);
 				this.giocaTurno(g, tavolo);
 				this.situazione(mazzo, giocatori, tavolo);
 			}
@@ -204,13 +182,13 @@ public class Scopa implements Gioco {
 			if (c.getSeme()==seme) {
 				if (c.getValore()==7) {puntiPrim=21; break;}
 				else if (c.getValore()==6) {if (puntiPrim<18) {puntiPrim=18;}}
-				else if (c.getValore()==1) {if (puntiPrim<18) {puntiPrim=16;}}
-				else if (c.getValore()==5) {if (puntiPrim<18) {puntiPrim=15;}}
-				else if (c.getValore()==4) {if (puntiPrim<18) {puntiPrim=14;}}
-				else if (c.getValore()==3) {if (puntiPrim<18) {puntiPrim=13;}}
-				else if (c.getValore()==2) {if (puntiPrim<18) {puntiPrim=12;}}
+				else if (c.getValore()==1) {if (puntiPrim<16) {puntiPrim=16;}}
+				else if (c.getValore()==5) {if (puntiPrim<15) {puntiPrim=15;}}
+				else if (c.getValore()==4) {if (puntiPrim<14) {puntiPrim=14;}}
+				else if (c.getValore()==3) {if (puntiPrim<13) {puntiPrim=13;}}
+				else if (c.getValore()==2) {if (puntiPrim<12) {puntiPrim=12;}}
 				else if (c.getValore()==10||c.getValore()==9||c.getValore()==8) {
-					if (puntiPrim<18) {	puntiPrim=10;}
+					if (puntiPrim<10) {	puntiPrim=10;}
 					}
 				else puntiPrim=0;
 			}

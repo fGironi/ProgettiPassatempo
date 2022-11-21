@@ -23,12 +23,13 @@ public class Main {
 		while (partita==true) {
 			Utente user=new Utente(7);
 			Parola parola=new Parola();
-			System.out.println("scegli la modalità a cui giocare! scrivi \"harry\" per indovinare un personaggio di HP o \"parola\" per indovinare una parola casuale");
+			System.out.println("Scegli la modalità a cui giocare. Scrivi qualsiasi altra cosa per indovinare una parola casuale");
+			System.out.println("\"capitale\" per indovinare una capitale \"harry\" per indovinare un personaggio di Harry Potter");
 			String modalita=userInput.nextLine();
 			if (modalita.equals("harry")){
 				parola.creaHarryPotter();
 			}
-			if (modalita.equals("capitale")){
+			else if (modalita.equals("capitale")){
 				parola.creaCapitale();
 			}
 			
